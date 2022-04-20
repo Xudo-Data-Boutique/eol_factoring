@@ -6,5 +6,5 @@ Read the series of blogposts on Medium for a detailed documentation for the setu
 1. Connect to the Exact Online API with Postman
   - Find the Postman collection in the repository
 
-3. To be published
-4. ...
+2. To be published
+3. ...
