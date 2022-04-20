@@ -1,0 +1,318 @@
+{
+	"info": {
+		"_postman_id": "a9f1d04c-013a-4614-b12e-0bad1a987759",
+		"name": "EOL",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Authentication Token",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://start.exactonline.be/api/oauth2/auth?client_id=7f5c3750&redirect_uri=https://oauth.pstmn.io/v1/callback&response_type=code",
+					"protocol": "https",
+					"host": [
+						"start",
+						"exactonline",
+						"be"
+					],
+					"path": [
+						"api",
+						"oauth2",
+						"auth"
+					],
+					"query": [
+						{
+							"key": "client_id",
+							"value": "7f5c3750"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "https://oauth.pstmn.io/v1/callback"
+						},
+						{
+							"key": "response_type",
+							"value": "code"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "First token request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "7f5c3750",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "4Op",
+							"type": "text"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "https://oauth.pstmn.io/v1/callback",
+							"type": "text"
+						},
+						{
+							"key": "code",
+							"value": "XPGw!IAAAAGHGzg1_3lyn5h45PeiyLCy-ZjdCIoBexFdl34Bbh5Rm4QEAAAHTw9TzAvKF9Ni2PiCE9K4PSMxiIOk8wIaECJoyfcsr-eGEUTgeBBfmdGTyeLvUTqtdtxZVG8Qp_jKlQp-zF9BFVElNYkJRbX8leTL8vpkq0vw7eRGaR2JDlzQtxiHWOovXjMb5D6YW4qRl1_wmqUTk18mdn0Wf_h9qzK_2sDK-p1bIaNWahyetDgFPUYAAqvV-nCDwUFxLJ0FqSUtOnv0lY8k29qM6_pEtIMylN8GQ-hWlKwKCqeZqpY0TGVxZzx10VsDSY1aNGlpS0h05VIf07AVGNUeYBC1336CvWab7dCEoCncVCtunOjWjBbwTCzEYagi35SXhAWliodkvtJxYV79NicN0pDBjat3meZ64y-_0GosVYKwrSbbwe0Av7RwpNIQewVgLqnk8hLqnfR21G2oVx09aNLTp8t7RVMhJMzWfT1sPPQIJa-TwIWPlAdGPtosram0wVUWeSV_FnnxZywRIkAoIJnztCQB2onMNgGDuldZatf6SFUUiMS9ams8MoA-384Mhv1KkEOk5bBaYEwNihSDX29lZ0qxXfad9vzVmQHhTxyWgApAGkYDY2O4CTgTmzac4KOBJp2nfgWGG2MrUJ86qZZg7Ey6zqyeCLtGsHILjn-NlPXbsMtygnF4",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://start.exactonline.be/api/oauth2/token",
+					"protocol": "https",
+					"host": [
+						"start",
+						"exactonline",
+						"be"
+					],
+					"path": [
+						"api",
+						"oauth2",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Refresh token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "refresh_token",
+							"type": "text"
+						},
+						{
+							"key": "refresh_token",
+							"value": "oItv!IAAAABBYeSpoNgs5wCBsWzzXkQ6jSryXdqQb8a5mxomR6ooZ0QEAAAH3GLnet5R9hqFin5e4KepMIZ9K-iOd7fw65iuxel9YAshRjruAk4vxndvVgupkLMxdtlbA5Y2WUTZsEtdrHsRGjWpeq5Gfg-PgRECBUpEOY-XidHwfiKj40XQk6qQQVsvpkDyFQqudzW9Dr25SOWvisucY_8xAXNbghEDKcJiZSdwrsnGTsVOrnyjtmCm2CHhM58OJX_-z4khGMimvSMS0C-R-dAmvmQWeKhmlm96e78GTFkcvpiYmUkwt761Ygp983qGRSyUEDPKUzSpZFdXKotejvaAm8bKUekR3QnURx0zKs82bEr4eHFH2bhUQ-JF5JYs-ZO8gKiRJAuBsBuTmsuEHaNOvhQercsuyioaumhQFXBXkdTQftJcA77KBARqWeG072Hk6pfXv_l6FwW_KcHSgzX-zOftQXmXgP8RDS4wuSuSaGhGBoIk8vuyr_I5Vn7hRuQcEnehFl6JM7RGRvyfWw2XnWwPZKKWvPZ-OyJGpmx-J1z_zkf1jn6UOigWS6dtucnoOo42c0jBGENK4d_ICJFWYJwKe0TRPy-7ct4rkT1KiSksmucTh0mJc9l4m6QK-HuBb2_rSLL2wpDFEd0qJjEpeEEs2y-7W8C3wEg",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "7f5c3750",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "4Op",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://start.exactonline.be/api/oauth2/token",
+					"protocol": "https",
+					"host": [
+						"start",
+						"exactonline",
+						"be"
+					],
+					"path": [
+						"api",
+						"oauth2",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CurrentDivision",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "https://start.exactonline.be/api/v1/current/Me",
+					"protocol": "https",
+					"host": [
+						"start",
+						"exactonline",
+						"be"
+					],
+					"path": [
+						"api",
+						"v1",
+						"current",
+						"Me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "XMLDivisions",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "gAAAABDM5uYAW_WZl63NiRgDxxD_vm0DJ8b71eswI7RgBZRn75fL047gLvPhJOu4TBYDnBKen1nS6rjtdtKK6v1MQyjjTvq6nd5683Y-bvq2rRR1UztdH1_pT9TP3MPJAp20-Vs1UEOpO8K3eiFwnMxF-91cLMIotPlWSjLhIPUQBtxQVAIAAIAAAAAzabB5y1yiCrjG7s48JhVf75CoWJXBPs4WzOcYAgNaQbaGcxqZPKfReecFTE5mOwMFtRnw0fpAanFXoPDUd83n-F34r7cIc9aI8GvaNbJ6Ln8kTfBATNbAmSL6iGpSAHMpDBQ3d_KQ5U6ljWxBjl_FPEvq4IcXZ7BqAbwGYtLN_E2gu6GZdjT7eiJ1JJMJ5pkJhoaG3CefNK1WbT-PRRd6yLV8NuVy6GlpHUgQv12_JFDMZmYvOjg_hnS_AoQlXxH1XDhIVfLbUUnsCakjymSEgcowBROybs9H5MGWd7NJ_SjSza9Vi7yBgyvspyYd-j3hjyS9ToKXsCOfnF-4D2i7tQLrBhiLPxBg-yrvQOMa9xdh2MwTSj7I-Zm3688Amp_Zhf_YtuT9V0JGupWpJucZapYGocs3rhGINQ4-BVn4uBv28Jdahj5HJptiOLO5oanAIrhVjvYK1CDB8jw9BBTfg8D6Nn11FbRs86RTQ7knSDDw-F2BH9wpgPMjLs092HOQ3naP0j9Iu5ADwjRX4ntsqTpU9x6XQLloH0ZB4Xn6hfoWWX-ucCQc26RH7aMDij1tB0R0CHqtC4fgHkESkRjzPmCG7cM6ptS3gsU0F4PImPSzQ-TpjUnWAtQ-vF8DbUvF8PM164fFaxP78F_3y3iPYtgTr-TAVpXBzPnDurNhKuy12YnD95TRFA6YVN6raqlnWdMaVJLz53oJFXP3wSmHYCaZUBuNEllUPXm14SMzkSJ0vStcuFR3-z-Dat1Ji_YV2FWhfZ1NIbcr0lfmCbNP\n",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "https://start.exactonline.be/docs/XMLDivisions.aspx",
+					"protocol": "https",
+					"host": [
+						"start",
+						"exactonline",
+						"be"
+					],
+					"path": [
+						"docs",
+						"XMLDivisions.aspx"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ReceivablesList",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "gAAAABEYAWrBI_y88-eSdFBG4QSibZ9G7acEzIbcJFSLEKx2M5LHW-e09VErDuIlQH8eqYYkVmYA-u_u7YNm08SKRal9AvgL2EDoCWWkAfZrcldJuhITIRfae53B5Nvkx6r8DKL5KWDRZ7UTPtYw7zEFrAwZPz9iG3dAgzdvWVXx_WlaRAIAAIAAAAAjfeUIsQFRWvPS_mM5Yl9WAMEZYbFNTdLj1SV8J_pid7Mfbjrb_B03ojoNnBtbwbal-uQV-_QZ0IyENASvcJ6JtPP5lZX_Unm3SrlBOq6yC3QAk1KoFYl0tCxO7FjN3HEx-_g9zYID3i6W3XKKoym_SVo2Vcf47M9_5G9vGxEjhNIP3QAi-2POC5Gsk4_pdDU5YRKsnUvTfl-sq7L6BBIZd4CwSw_Nvwcj6JZqBDHWg_MlLuQIB57swGufU9LJ1H6uKWjb7UvgtcprPLzYz8G8AqYLuxI5pbP4bGuyQJZ95kV3LwQ-YEMe0UqIEhKBUtvRgRdptzL7WAXOOudGydb2uYXgzG_GRv48AWaIk2gExwl8bIrseaxVyH9qKlKvdDxJCW7ECOTgVzGX-71pP2n_09T762QfoVFkBQp46TVr_vkx6sP5lnCQdYEoIti6WDUAx8xpbWL3d1oI9eKnGhfwA3uMNc-iiD7cVwOW-GPQIRK91WUSD9t_rUb2wyjC4TGvXl63rvBnK34VJglW2tMLa9ubUVfE3pLpj8TTQ0yt37iXZjXfIiH25dSVm16YP8NVP2WsdDXjnBUa3VyI2lVouMu5qfmIrsjjXDcAjfxV3pXSZddRe6My3rtJN-qYRnXtKYI_MM0b7DxhGvSliXnGfIfkOgc0F3y_eyjSiOIWhi0tLQqXB-wBxjuXQ1nolFJNwAotxErR3jQUEKzvAmy9ZPoaoZoOD0m-_P2WS9HFWPQqIvYzd1fT0Qnmd5ovoDo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://start.exactonline.be/api/v1/941857/read/financial/ReceivablesList",
+					"protocol": "https",
+					"host": [
+						"start",
+						"exactonline",
+						"be"
+					],
+					"path": [
+						"api",
+						"v1",
+						"941857",
+						"read",
+						"financial",
+						"ReceivablesList"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CRM Accounts",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "gAAAABh8WRcLJXjnDrwQy4gSVc17IK0XDqgK7fhY8zL_wxLy7xPWhmwsgKivxT30xyBmAiE-LSJvyqr1riqVNj2h61beVtoa2s2_fIyJfC8ap5k2qjKXR5RCbUFAcYyXPh5SEFGVif9spgmIJ3H_ucdnQV5XFDdm9Ejtz-CW2a2O-iJLVAIAAIAAAAB0mRAbJxJFdm5Va-YgmZ5nhV8cvUuFyZbJgxVad2xa5Z3Zk7Cj5MARI7DrgSsvmI4wuxDPqWmfwz9o4l9vk073wvwlkYUXhebxJZM__H37oxlYXziE63RRyRQAdtO_avaY9cVi-NOFaR5zQ4y85gqfB4T5Ak-97TGp2tPm7QI536AOE9JFuqnpsL-jtEir6SBe7s-wduANqOkA7SyL24BJgAhL-4rT0GB20vUCz97u3jWz-vHXbHdZUy_zEJXSMVC69-yxWFZ1jNpJgpc4_RGjbl6LGg53busFgoilpymrLph0Fg9SBIg1Aq0NCIqX438MM4Vc7LQyYYTwluz-VazM9tWeCrvl-JlNjqjl_j9X4rOjaodOyOwZ3Bs_XG0nBSujuOWBPLfj6zTZ8xcrBSMlrO6l_Eb7y_-qsmMJ4aKIaOx8cImU01gkbkbm1xlmhgK-6bEI-K6JtqgDOVBJSmUGasyRbIosdxbDwWV0gFwtpdZDUsCSomBJhXF8pvuXb6qcRLtBQKvKow2z0Snp96E0u6GatHlrCpCFncDdMySZ3mU-wcp9c67nM4D6MVz8SpaFcaD8hWfOoAq2avGNzzVbg3un5z2TToEGgrx2pRE__-0sAYwU7P51QpDphB1K1f2cfrjQpJUunBXsXv4qP2jWKl1cHynOT-N6UOFspG18kl6gWHsQDCwA1Ez1lMPKR3W1G-DEVTfgiue4xH-kQ1L5AMg0eOlUflDAZ6sac1LjojJJojbU-XKv-ORsWS2UzdyovxMSOGJr6EKIijZcHpUn",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://start.exactonline.be/api/v1/941857/crm/Accounts",
+					"protocol": "https",
+					"host": [
+						"start",
+						"exactonline",
+						"be"
+					],
+					"path": [
+						"api",
+						"v1",
+						"941857",
+						"crm",
+						"Accounts"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
