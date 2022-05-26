@@ -1,0 +1,84 @@
+/*Run once to drop obsolete tables if they are already created:*/
+Drop table AccessToken;
+Drop table RefreshToken;
+Drop table Divisions;
+Drop procedure sp_update_access_token;
+Drop procedure sp_update_refresh_token;
+
+CREATE TABLE eol_authorization (
+    ClientName varchar(255),
+    ClientID varchar(1024),
+    ClientSecret varchar(1024),
+    AccessToken varchar(2048),
+    RefreshToken varchar(1024)
+);
+
+CREATE TABLE crmaccounts (
+    ID varchar(1024),
+    Code int,
+    Country varchar(255),
+    Name varchar(255),
+    AddressLine1 varchar(255),
+    Postcode int,
+    City varchar(255),
+    VATNumber varchar(255),
+    SalesCurrency varchar(255)
+);
+
+CREATE TABLE divisions (
+    Description varchar(255),
+    Code int,
+    HID int
+);
+
+CREATE TABLE receivables (
+    DueDate varchar(255),
+    Amount  double precision,
+    CurrencyCode varchar(255),
+    AccountID varchar(1024),
+    AccountCode int,
+    JournalCode int,
+    InvoiceNumber varchar(255),
+    InvoiceDate varchar(255)
+);
+
+CREATE PROCEDURE sp_update_access_token @AccessToken nvarchar(2048)
+AS
+UPDATE [dbo].[eol_authorization]
+SET AccessToken=@AccessToken;
+
+CREATE PROCEDURE sp_update_refresh_token @RefreshToken nvarchar(1024)
+AS
+UPDATE [dbo].[eol_authorization]
+SET RefreshToken=@RefreshToken;
+
+/*The views are informative and not needed to run the Data Factory Pipelines. 
+The same code as these views is used in the source/query pane of the store_factoring_files pipelines */
+
+CREATE VIEW invoice_file AS
+SELECT
+	InvoiceNumber as NR,
+	case 
+		when JournalCode <> '700' then 'P'
+		when Amount < 0 then 'C'
+		else 'I' 
+	end as [TYPE I/C/B],
+	AccountCode as DEBTORNR,
+	Amount as AMOUNT,
+	CurrencyCode as CURRENCY,
+	convert(varchar,dateadd(d, convert(bigint, substring(InvoiceDate,7,13))/86400000, '19700101'),103) as INVOICEDATE,
+	convert(varchar,dateadd(d, convert(bigint, substring(DueDate,7,13))/86400000, '19700101'),103) as DUEDATE
+FROM [dbo].[receivables];
+
+CREATE VIEW debtors_file AS
+SELECT
+	Code as DEBTORNR,
+	trim(Country) as COUNTRY,
+	Name as NAME,
+	AddressLine1 as ADDRESS,
+	Postcode as ZIPCODE,
+	City as CITY,
+	VATNumber as VAT,
+	substring(VATNumber,1,2) as VATNUMBER,
+	SalesCurrency as CURRENCY
+FROM [dbo].[crmaccounts];
