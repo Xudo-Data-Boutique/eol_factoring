@@ -1,5 +1,7 @@
 # Use MS Azure Data Factory to speed up your cash conversion cycle
 
+If we define data strategy as a plan to get more value from your data, this can be a concrete usecase how to generate this value - at least if you find not running out of cash worth something.
+
 Cashflow can be a challenge. You have to pay your suppliers in 30 days, but your clients only pay in 60 to 90 days. You can use factoring to bridge this divide. Talk to your bank to see if your business is eligible for this kind of pre-financing.
 
 # Factoring
