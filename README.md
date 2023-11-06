@@ -22,6 +22,5 @@ How to do OAUTH2 authentication and authorization for the Exact Online Cloud Acc
 
 As soon as we have retrieved our first Access and Refresh token from the API using Postman, we can set up an automated process to make sure we have access to the data at the time we need it.
 
-3. 
-
-Once we have the authorization in place and have access to the data, we will use Azure Data Factory Pipelines, an Azure SQL Database and Azure Blog Storage to get, process and store the data to send to the bank for factoring.
+3. Once we have the authorization in place and have access to the data, we will use Azure Data Factory Pipelines, an Azure SQL Database and Azure Blog Storage to get, process and store the data to send to the bank for factoring.
+- https://medium.com/@xudo_data_boutique/use-azure-data-factory-to-store-api-data-to-azure-blob-storage-3fe85b26a718
